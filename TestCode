@@ -1,0 +1,32 @@
+public class Program
+    {
+        static void Main(string[] args)
+        {
+            LinkedList list = new LinkedList();
+
+            list.InsertNode(5, 1);
+            list.InsertNode(4, 1);
+            list.InsertNode(3, 1);
+            list.InsertNode(2, 1);
+            list.InsertNode(1, 1);
+
+            list.PrintList(); // Expected output : 1 2 3 4 5
+            Console.WriteLine();
+
+            list.InsertNode(6, 6);
+            list.InsertNode(9, 7);
+
+            list.PrintList(); // Expected output : 1 2 3 4 5 6 9
+            Console.WriteLine();
+
+            list.InsertNode(7, 7);
+            list.InsertNode(8, 8);
+
+            list.InsertNode(11, 11);
+
+            list.PrintList(); // Expected output : 1 2 3 4 5 6 7 8 9
+            Console.WriteLine();
+
+            Console.ReadLine();
+        }
+    }
