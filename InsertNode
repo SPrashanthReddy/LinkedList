@@ -1,0 +1,117 @@
+public class Node
+    {
+        public int data;
+        public Node next;
+
+        public Node(int data)
+        {
+            this.data = data;
+            this.next = null;
+        }
+    }
+    public class LinkedList
+    {
+        public Node head;
+        public Node tail;
+
+        public int length;
+
+        public Node InsertNode(int data, int position)
+        {
+            // I am assuming that linked list is 1 based indexed list throughout this program.
+            if (position > length + 1)
+            {
+                throw new Exception("Invalid index position");
+            }
+
+            if (head == null)
+            {
+                Node newNode = CreateNewNodeInMemory(data);
+
+                head = newNode;
+                tail = newNode;
+                length = 1;
+
+                return head;
+            }
+            else if (position == 1)
+            {
+                // Insert new node at beginning
+                head = InsertNodeAtBeginning(data);
+                return head;
+            }
+            else if (position == length + 1)
+            {
+                // Insert new node at the end of linked list
+                head = InsertNodeAtEnd(data);
+                return head;
+
+            }
+            else
+            {
+                // Insert new node at specified position that occurs in between head and tail. 
+                head = InsertNodeInBetween(data, position);
+                return head;
+            }
+        }
+
+        private Node CreateNewNodeInMemory(int data)
+        {
+            Node newNode = new Node(data);
+            return newNode;
+        }
+
+        private Node InsertNodeAtBeginning(int data)
+        {
+            Node newNode = CreateNewNodeInMemory(data);
+            newNode.next = head;
+            head = newNode;
+            length++;
+
+            return head;
+        }
+
+        private Node InsertNodeAtEnd(int data)
+        {
+            Node newNode = CreateNewNodeInMemory(data);
+            tail.next = newNode;
+            tail = newNode;
+            length++;
+
+            return head;
+        }
+
+        private Node InsertNodeInBetween(int data, int position)
+        {
+            Node current = head;
+            int currentPosition = 1;
+
+            while (currentPosition != position - 1)
+            {
+                currentPosition++;
+                current = current.next;
+            }
+
+            Node newNode = CreateNewNodeInMemory(data);
+
+            Node tempNext = current.next;
+            current.next = newNode;
+            newNode.next = tempNext;
+            length++;
+
+            // There wont be any change to head pointer but still let us return it.
+            return head;
+
+        }
+
+        public void PrintList()
+        {
+            Node temp = head;
+
+            while (temp != null)
+            {
+                Console.WriteLine(temp.data + "  ");
+                temp = temp.next;
+            }
+        }
+    }
