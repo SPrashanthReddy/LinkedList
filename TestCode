@@ -22,9 +22,11 @@ public class Program
             list.InsertNode(7, 7);
             list.InsertNode(8, 8);
 
-            list.InsertNode(11, 11);
-
             list.PrintList(); // Expected output : 1 2 3 4 5 6 7 8 9
+
+           // list.InsertNode(11, 11); // If we include this line then it should throw error since it is invalid position. 
+
+
             Console.WriteLine();
 
             Console.ReadLine();
